@@ -182,6 +182,7 @@ export async function installDeps (
     const { upToDate, wantedLockfileToRestore } = await checkDepsStatus({
       ...opts,
       ignoreFilteredInstallCache: true,
+      treatLocalFileDepsAsOutdated: true,
     })
     if (upToDate && await restoreWantedLockfileIfMissing(wantedLockfileToRestore, opts)) {
       if (opts.hooks?.customResolvers?.some(r => r.shouldRefreshResolution)) {
